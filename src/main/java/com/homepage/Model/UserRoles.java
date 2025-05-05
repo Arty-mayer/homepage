@@ -4,16 +4,15 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "menus")
+@Table(name = "user_roles")
 @Data
-public class Menu {
+public class UserRoles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String description;
-    @Column(name = "items", columnDefinition = "TEXT")
-    private String items;
+
 
 }

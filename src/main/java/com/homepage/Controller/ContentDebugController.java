@@ -2,10 +2,10 @@ package com.homepage.Controller;
 
 import com.homepage.Model.Content;
 import com.homepage.Model.ContentPermission;
-import com.homepage.Model.MyAppUser;
-import com.homepage.Repository.ContentPermissionRepository;
-import com.homepage.Repository.ContentRepository;
-import com.homepage.Repository.MyAppUserRepository;
+import com.homepage.Model.UserAccounts;
+import com.homepage.rpository.ContentPermissionRepository;
+import com.homepage.rpository.ContentRepository;
+import com.homepage.rpository.UserAccountsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -31,7 +31,7 @@ public class ContentDebugController {
     private ContentPermissionRepository permissionRepository;
 
     @Autowired
-    private MyAppUserRepository userRepository;
+    private UserAccountsRepository userRepository;
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllContentWithPermissions() {
@@ -62,12 +62,12 @@ public class ContentDebugController {
             return ResponseEntity.badRequest().body("Nicht authentifiziert");
         }
         
-        Optional<MyAppUser> userOpt = userRepository.findByUsername(auth.getName());
+        Optional<UserAccounts> userOpt = userRepository.findByUsername(auth.getName());
         if (userOpt.isEmpty()) {
             return ResponseEntity.badRequest().body("Benutzer nicht gefunden");
         }
         
-        MyAppUser user = userOpt.get();
+        UserAccounts user = userOpt.get();
         Map<String, Object> result = new HashMap<>();
         result.put("username", user.getUsername());
         result.put("role", user.getUserRole());

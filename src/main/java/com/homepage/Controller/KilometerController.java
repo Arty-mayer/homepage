@@ -1,6 +1,6 @@
 package com.homepage.Controller;
 
-import com.homepage.Service.KilometerService;
+import com.homepage.service.KilometerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

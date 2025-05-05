@@ -13,9 +13,9 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
-@Table(name = "my_app_user")
+@Table(name = "user_accounts")
 @Data
-public class MyAppUser {
+public class UserAccounts {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,9 @@ public class MyAppUser {
     
     @Email(message = "Ungültige E-Mail-Adresse")
     private String email;
+
+    @Column(nullable = false, name="role_id")
+    private Long roleId;
     
     @NotBlank(message = "Rolle darf nicht leer sein")
     @Column(nullable = false)

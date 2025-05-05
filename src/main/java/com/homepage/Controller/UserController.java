@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.homepage.Model.MyAppUser;
-import com.homepage.Service.MyAppUserService;
+import com.homepage.Model.UserAccounts;
+import com.homepage.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,14 +22,14 @@ import jakarta.validation.Valid;
 public class UserController {
 
     @Autowired
-    private MyAppUserService userService;
+    private UserService userService;
 
     // 🔹 1. Benutzer registrieren (nur Admins dürfen neue Benutzer anlegen)
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> createUser(@Valid @RequestBody MyAppUser user) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody UserAccounts user) {
         try {
-            MyAppUser createdUser = userService.createUser(user);
+            UserAccounts createdUser = userService.createUser(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                 "message", "Benutzer erfolgreich registriert",
                 "id", createdUser.getId(),
@@ -58,13 +58,13 @@ public class UserController {
     // 🔹 3. Aktuellen Benutzer abrufen
     @GetMapping("/current")
     public ResponseEntity<?> getCurrentUserInfo(Authentication authentication) {
-        Optional<MyAppUser> userOpt = userService.findByUsername(authentication.getName());
+        Optional<UserAccounts> userOpt = userService.findByUsername(authentication.getName());
         
         if (userOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Benutzer nicht gefunden"));
         }
         
-        MyAppUser user = userOpt.get();
+        UserAccounts user = userOpt.get();
         return ResponseEntity.ok(Map.of(
             "username", user.getUsername(),
             "role", user.getUserRole(),
@@ -75,9 +75,9 @@ public class UserController {
     // 🔹 4. Benutzer aktualisieren (nur für Admins)
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody MyAppUser updatedUser) {
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserAccounts updatedUser) {
         try {
-            Optional<MyAppUser> result = userService.updateUser(id, updatedUser);
+            Optional<UserAccounts> result = userService.updateUser(id, updatedUser);
             
             if (result.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Benutzer nicht gefunden"));
@@ -95,7 +95,7 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         try {
             // Prüfen, ob der Benutzer existiert
-            Optional<MyAppUser> userOpt = userService.findById(id);
+            Optional<UserAccounts> userOpt = userService.findById(id);
             if (userOpt.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Benutzer nicht gefunden"));
             }

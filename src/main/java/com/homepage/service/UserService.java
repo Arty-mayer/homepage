@@ -1,10 +1,9 @@
-package com.homepage.Service;
+package com.homepage.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.homepage.Model.MyAppUser;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.homepage.Model.UserAccounts;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,30 +13,33 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.homepage.Repository.MyAppUserRepository;
+import com.homepage.rpository.UserAccountsRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Service
-public class MyAppUserService implements UserDetailsService {
+public class UserService implements UserDetailsService {
     
-    private static final Logger logger = LoggerFactory.getLogger(MyAppUserService.class);
-    
-    @Autowired
-    private MyAppUserRepository repository;
-    
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+    private final UserAccountsRepository userAccountsRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    private final String email = null;
+
+    public UserService(UserAccountsRepository userAccountsRepository, PasswordEncoder passwordEncoder) {
+        this.userAccountsRepository = userAccountsRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("Login-Versuch für Benutzer: {}", username);
         
-        Optional<MyAppUser> user = repository.findByUsername(username);
+        Optional<UserAccounts> user = userAccountsRepository.findByUsername(username);
         
         if (user.isPresent()) {
-            var userObj = user.get();
+            UserAccounts  userObj = user.get();
 
             // Sicherstellen, dass eine Rolle existiert
             if (userObj.getUserRole() == null || userObj.getUserRole().isEmpty()) {
@@ -55,7 +57,7 @@ public class MyAppUserService implements UserDetailsService {
             
             // Wichtig: Aktualisiere die Rolle im Benutzer-Objekt, damit sie im gesamten System konsistent ist
             userObj.setUserRole(role);
-            repository.save(userObj);
+            userAccountsRepository.save(userObj);
 
             logger.info("Benutzer '{}' hat die Rolle: {}", username, role);
 
@@ -74,9 +76,9 @@ public class MyAppUserService implements UserDetailsService {
      * Erstellt einen neuen Benutzer
      */
     @Transactional
-    public MyAppUser createUser(MyAppUser user) {
+    public UserAccounts createUser(UserAccounts user) {
         // Prüfen, ob der Benutzername bereits existiert
-        if (repository.existsByUsername(user.getUsername())) {
+        if (userAccountsRepository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("Benutzername existiert bereits");
         }
         
@@ -91,24 +93,24 @@ public class MyAppUserService implements UserDetailsService {
         // Passwort verschlüsseln
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         
-        return repository.save(user);
+        return userAccountsRepository.save(user);
     }
     
     /**
      * Aktualisiert einen vorhandenen Benutzer
      */
     @Transactional
-    public Optional<MyAppUser> updateUser(Long userId, MyAppUser updatedUser) {
-        Optional<MyAppUser> userOpt = repository.findById(userId);
+    public Optional<UserAccounts> updateUser(Long userId, UserAccounts updatedUser) {
+        Optional<UserAccounts> userOpt = userAccountsRepository.findById(userId);
         if (userOpt.isEmpty()) {
             return Optional.empty();
         }
         
-        MyAppUser user = userOpt.get();
+        UserAccounts user = userOpt.get();
         
         // Benutzername aktualisieren, wenn er sich geändert hat
         if (!user.getUsername().equals(updatedUser.getUsername())) {
-            if (repository.existsByUsername(updatedUser.getUsername())) {
+            if (userAccountsRepository.existsByUsername(updatedUser.getUsername())) {
                 throw new RuntimeException("Benutzername existiert bereits");
             }
             user.setUsername(updatedUser.getUsername());
@@ -132,7 +134,7 @@ public class MyAppUserService implements UserDetailsService {
             user.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
         }
         
-        return Optional.of(repository.save(user));
+        return Optional.of(userAccountsRepository.save(user));
     }
     
     /**
@@ -140,34 +142,34 @@ public class MyAppUserService implements UserDetailsService {
      */
     @Transactional
     public void deleteUser(Long userId) {
-        repository.deleteById(userId);
+        userAccountsRepository.deleteById(userId);
     }
     
     /**
      * Findet einen Benutzer anhand des Benutzernamens
      */
-    public Optional<MyAppUser> findByUsername(String username) {
-        return repository.findByUsername(username);
+    public Optional<UserAccounts> findByUsername(String username) {
+        return userAccountsRepository.findByUsername(username);
     }
     
     /**
      * Findet einen Benutzer anhand seiner ID
      */
-    public Optional<MyAppUser> findById(Long id) {
-        return repository.findById(id);
+    public Optional<UserAccounts> findById(Long id) {
+        return userAccountsRepository.findById(id);
     }
     
     /**
      * Gibt alle Benutzer zurück
      */
-    public List<MyAppUser> getAllUsers() {
-        return repository.findAll();
+    public List<UserAccounts> getAllUsers() {
+        return userAccountsRepository.findAll();
     }
     
     /**
      * Gibt alle Benutzer mit einer bestimmten Rolle zurück
      */
-    public List<MyAppUser> getUsersByRole(String role) {
-        return repository.findByUserRole(role);
+    public List<UserAccounts> getUsersByRole(String role) {
+        return userAccountsRepository.findByUserRole(role);
     }
 }

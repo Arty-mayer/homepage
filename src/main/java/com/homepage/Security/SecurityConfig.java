@@ -17,7 +17,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.homepage.Service.MyAppUserService;
+import com.homepage.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +29,7 @@ import java.util.Arrays;
 @EnableMethodSecurity // Aktiviert @PreAuthorize
 public class SecurityConfig {
     
-    private final MyAppUserService appUserService;
+    private final UserService appUserService;
     private final PasswordEncoder passwordEncoder;
     
     @Bean

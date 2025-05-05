@@ -1,4 +1,4 @@
-package com.homepage.Service;
+package com.homepage.service;
 
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;

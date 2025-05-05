@@ -1,6 +1,6 @@
 package com.homepage.Controller;
 
-import com.homepage.Service.MenuHandler;
+import com.homepage.service.MenuHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

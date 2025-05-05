@@ -1,17 +1,14 @@
-package com.homepage.Service;
+package com.homepage.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.homepage.Model.Menu;
-import com.homepage.Repository.MenuRepository;
+import com.homepage.rpository.MenuRepository;
 import com.homepage.dto.MenuDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
 
-import java.io.IOException;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Service

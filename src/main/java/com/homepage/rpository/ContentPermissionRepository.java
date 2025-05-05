@@ -1,4 +1,4 @@
-package com.homepage.Repository;
+package com.homepage.rpository;
 
 import com.homepage.Model.Content;
 import com.homepage.Model.ContentPermission;

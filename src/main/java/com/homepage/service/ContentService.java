@@ -1,11 +1,11 @@
-package com.homepage.Service;
+package com.homepage.service;
 
 import com.homepage.Model.Content;
 import com.homepage.Model.ContentPermission;
-import com.homepage.Model.MyAppUser;
-import com.homepage.Repository.ContentPermissionRepository;
-import com.homepage.Repository.ContentRepository;
-import com.homepage.Repository.MyAppUserRepository;
+import com.homepage.Model.UserAccounts;
+import com.homepage.rpository.ContentPermissionRepository;
+import com.homepage.rpository.ContentRepository;
+import com.homepage.rpository.UserAccountsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class ContentService {
     private ContentPermissionRepository contentPermissionRepository;
 
     @Autowired
-    private MyAppUserRepository userRepository;
+    private UserAccountsRepository userRepository;
 
     // Gibt alle Content-Einträge zurück (für Admins)
     public List<Content> getAllContent() {
@@ -41,13 +41,13 @@ public class ContentService {
     @Transactional
     public List<Content> getUserContent(String username) {
         System.out.println("Suche Content für Benutzer: " + username);
-        Optional<MyAppUser> userOpt = userRepository.findByUsername(username);
+        Optional<UserAccounts> userOpt = userRepository.findByUsername(username);
         if (userOpt.isEmpty()) {
             System.err.println("Benutzer nicht gefunden: " + username);
             throw new RuntimeException("Benutzer nicht gefunden");
         }
         
-        MyAppUser user = userOpt.get();
+        UserAccounts user = userOpt.get();
         System.out.println("Benutzer gefunden: " + user.getUsername() + ", Rolle: " + user.getUserRole());
         
         // Alle Content-Einträge mit explizitem Laden der Berechtigungen
