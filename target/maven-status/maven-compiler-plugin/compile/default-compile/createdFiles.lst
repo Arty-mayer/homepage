@@ -1,0 +1,10 @@
+com\example\demo\DemoApplication.class
+com\example\demo\Model\ContentPermission.class
+com\example\demo\Controller\ContentController.class
+com\example\demo\Controller\ViewController.class
+com\example\demo\Model\MyAppUser.class
+com\example\demo\Repository\MyAppUserRepository.class
+com\example\demo\Repository\ContentPermissionRepository.class
+com\example\demo\Model\Content.class
+com\example\demo\Security\SecurityConfig.class
+com\example\demo\Repository\ContentRepository.class

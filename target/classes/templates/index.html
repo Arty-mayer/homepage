@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGI Dashboard</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/index.js" defer></script>
+</head>
+<body>
+
+<header>
+    <img src="/images/vgi_logo.png" alt="VGI Logo">
+    <nav>
+        <a href="/index">Home</a>
+        <a href="#">Kontakt</a>
+
+        <div class="user-menu">
+            <img src="/images/profile.jpg" alt="Profilbild" id="user-icon">
+            <div class="dropdown" id="dropdown-menu">
+                <a href="profil.html">Profil anzeigen</a>
+                <a href="einstellungen.html">Einstellungen</a>
+                <a href="anfragen.html">Meine Anfragen</a>
+                <a href="nachrichten.html">Nachrichten</a>
+                <a href="passwort.html">Passwort ändern</a>
+                <a href="/logout">Abmelden</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="banner">
+    <img src="/images/Frame.jpeg" alt="Banner Image">
+</div>
+
+<div class="grid-container">
+    <div class="grid">
+        <div class="card has-submenu" data-content="auswertungen">
+            <img src="/images/statistic.png" alt="statistic Icon">
+            <h3>Auswertungen</h3>
+            <div class="extra-content">
+                <a href="kilometer_linie.html">Kilometer Linie</a>
+                <a href="kilometer_gemarkung.html">Kilometer Gemarkung</a>
+                <a href="fahrten_tagesart.html">Fahrten pro Tagesart</a>
+            </div>
+        </div>
+        
+        <div class="card" data-content="daten">
+            <img src="/images/database.png" alt="database Icon">
+            <h3>Daten</h3>
+        </div>
+        
+        <div class="card" data-content="new_user_grid">
+            <a href="/signup">
+                <img src="/images/user_add.png" alt="Signup Icon">
+                <h3>Neuen Benutzer anlegen</h3>
+            </a>
+        </div>
+        
+        <div class="card" data-content="sonstiges">
+            <img src="/images/database.png" alt="database Icon">
+            <h3>Sonstiges</h3>
+        </div>
+        
+        <div id="admin-menu" style="display: none;" class="card" data-content="benutzerverwaltung">
+            <a href="/users/management">
+                <img src="/images/user_management.png" alt="User Management Icon">
+                <h3>Benutzerverwaltung</h3>
+            </a>
+        </div>
+        
+        <div id="content-management" style="display: none;" class="card" data-content="contentverwaltung">
+            <a href="/content/management">
+                <img src="/images/content_management.png" alt="Content Management Icon">
+                <h3>Content-Verwaltung</h3>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

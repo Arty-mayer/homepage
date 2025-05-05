@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content-Verwaltung</title>
+    <link rel="stylesheet" href="/css/content-management.css">
+    <!-- Korrigierter Pfad zur JavaScript-Datei -->
+    <script src="/js/content-management.js" defer></script>
+</head>
+<body>
+
+<header>
+    <h1>Content-Verwaltung</h1>
+    <a href="/index">Zurück zum Dashboard</a>
+</header>
+
+<div class="admin-container">
+    <h2>Content-Übersicht</h2>
+    <button id="add-content-btn">Neuen Content hinzufügen</button>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titel</th>
+                <th>Beschreibung</th>
+                <th>Verzeichnis</th>
+                <th>Rollen</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody id="content-list">
+            <!-- Inhalte werden hier eingefügt -->
+        </tbody>
+    </table>
+    
+</div>
+
+<!-- Template für den Dialog zum Hinzufügen neuer Content-Einträge -->
+<template id="add-content-template">
+    <div class="modal">
+        <div class="modal-content">
+            <h3>Neuen Content hinzufügen</h3>
+            <div>
+                <label for="content-title">Titel:</label>
+                <input type="text" id="content-title" required>
+            </div>
+            <div>
+                <label for="content-description">Beschreibung:</label>
+                <input type="text" id="content-description">
+            </div>
+            <div>
+                <label for="content-html-path">HTML-Pfad:</label>
+                <input type="text" id="content-html-path" placeholder="/templates/page.html">
+            </div>
+            <div>
+                <label for="content-link">Link:</label>
+                <input type="text" id="content-link" placeholder="/page">
+            </div>
+            <div class="button-group">
+                <button id="save-content">Speichern</button>
+                <button id="cancel-content">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Template für den Dialog zum Anzeigen/Bearbeiten von Berechtigungen -->
+<template id="permissions-template">
+    <div class="modal">
+        <div class="modal-content">
+            <h3>Berechtigungen verwalten</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Rolle</th>
+                        <th>Aktion</th>
+                    </tr>
+                </thead>
+                <tbody id="permissions-list">
+                    <!-- Berechtigungen werden hier eingefügt -->
+                </tbody>
+            </table>
+            
+            <h4>Neue Berechtigung hinzufügen</h4>
+            <div>
+                <label for="role">Rolle:</label>
+                <select id="role">
+                    <option value="">Bitte wählen</option>
+                    <option value="ROLE_ADMIN">Admin</option>
+                    <option value="ROLE_RBA">RBA</option>
+                    <option value="ROLE_EI">EI</option>
+                    <option value="ROLE_USER">User</option>
+                </select>
+            </div>
+            <button id="add-permission">Berechtigung hinzufügen</button>
+            <button id="close-permissions">Schließen</button>
+        </div>
+    </div>
+</template>
+
+</body>
+</html>

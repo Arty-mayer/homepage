@@ -1,0 +1,185 @@
+/* Allgemeine Stile */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #dee2e6;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #dee2e6;
+}
+
+header img {
+  height: 60px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #000;
+}
+
+/* Benutzerprofil */
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.user-menu img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  transition: 0.3s;
+}
+
+.user-menu img:hover {
+  opacity: 0.8;
+}
+
+/* Dropdown-Menü */
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  width: 180px;
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s;
+}
+
+.dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  text-align: center;
+  height: 500px;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* Karten-Design */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  height: auto;
+  min-height: 150px;
+  overflow: hidden;
+}
+
+.card a {
+  text-decoration: none;
+  color: #000;
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: opacity 0s ease-in-out;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 1.2em;
+  transition: transform 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+}
+
+.card.has-submenu {
+  min-height: 150px;
+}
+
+.card.has-submenu:hover {
+  padding-bottom: 20px;
+}
+
+.card.has-submenu:hover img {
+  opacity: 0;
+}
+
+.card.has-submenu:hover h3 {
+  transform: translateY(-70px);
+}
+
+.extra-content {
+  display: none;
+  text-align: center;
+  margin-top: -75px;
+}
+
+.card.has-submenu:hover .extra-content {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.extra-content a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  font-size: 1em;
+  margin: 15px 0;
+  transition: color 0.3s;
+}
+
+.extra-content a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}

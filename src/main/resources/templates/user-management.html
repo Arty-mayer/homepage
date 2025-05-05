@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benutzerverwaltung</title>
+    <link rel="stylesheet" href="/css/user-management.css">
+    <script src="/js/user-management.js" defer></script>
+</head>
+<body>
+
+<header>
+    <h1>Benutzerverwaltung</h1>
+    <a href="/index">Zurück zum Dashboard</a>
+</header>
+
+<div class="admin-container">
+    <h2>Benutzerübersicht</h2>
+    <button id="add-user-btn">Neuen Benutzer hinzufügen</button>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Benutzername</th>
+                <th>Email</th>
+                <th>Rolle</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody id="user-list">
+            <!-- Benutzer werden hier eingefügt -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Template für den Dialog zum Hinzufügen/Bearbeiten von Benutzern -->
+<template id="user-dialog-template">
+    <div class="modal">
+        <div class="modal-content">
+            <h3 id="dialog-title">Benutzer bearbeiten</h3>
+            <div>
+                <label for="edit-username">Benutzername:</label>
+                <input type="text" id="edit-username" required>
+            </div>
+            <div>
+                <label for="edit-email">E-Mail:</label>
+                <input type="email" id="edit-email">
+            </div>
+            <div>
+                <label for="edit-role">Rolle:</label>
+                <select id="edit-role">
+                    <option value="ROLE_ADMIN">Admin</option>
+                    <option value="ROLE_RBA">RBA</option>
+                    <option value="ROLE_EI">EI</option>
+                    <option value="ROLE_USER">User</option>
+                </select>
+            </div>
+            <div>
+                <label for="edit-password">Passwort:</label>
+                <input type="password" id="edit-password" placeholder="Leer lassen für keine Änderung">
+            </div>
+            <div class="button-group">
+                <button id="save-user">Speichern</button>
+                <button id="cancel-edit">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+</body>
+</html>

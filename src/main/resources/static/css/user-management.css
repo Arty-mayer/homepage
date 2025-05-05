@@ -1,0 +1,216 @@
+/* Grundlegendes Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+header a:hover {
+    background-color: #e0e0e0;
+}
+
+/* Container für Benutzerverwaltung */
+.admin-container {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.admin-container h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Tabellen-Styling */
+.admin-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    background-color: white;
+}
+
+.admin-container th, 
+.admin-container td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.admin-container th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.admin-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-container tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button-Styling */
+#add-user-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+#add-user-btn:hover {
+    background-color: #45a049;
+}
+
+.admin-container button {
+    padding: 6px 12px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+}
+
+.admin-container button:hover {
+    background-color: #e9ecef;
+}
+
+.edit-user {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.edit-user:hover {
+    background-color: #0069d9 !important;
+}
+
+.delete-user {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.delete-user:hover {
+    background-color: #c82333 !important;
+}
+
+/* Modales Dialogfenster */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+/* Formular-Styling */
+.modal input, 
+.modal select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal input:focus,
+.modal select:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.modal label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Button-Gruppe im Modal */
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.button-group button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#save-user {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+#save-user:hover {
+    background-color: #218838;
+}
+
+#cancel-edit {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+#cancel-edit:hover {
+    background-color: #5a6268;
+}

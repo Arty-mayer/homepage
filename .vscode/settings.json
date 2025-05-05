@@ -1,0 +1,17 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "livePreview.defaultPreviewPath": "/src/main/resources/templates/login.html",
+    "CodeGPT.apiKey": "CodeGPT Plus Beta",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "registration",
+            "username": "postgres",
+            "name": "demo"
+        }
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
