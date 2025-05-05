@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.homepage.Model.UserAccounts;
+import com.homepage.Security.UserCustom;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -61,11 +62,13 @@ public class UserService implements UserDetailsService {
 
             logger.info("Benutzer '{}' hat die Rolle: {}", username, role);
 
-            return User.builder()
+            UserDetails userDetails = UserCustom.builder()
                     .username(userObj.getUsername())
                     .password(userObj.getPassword())
                     .authorities(List.of(new SimpleGrantedAuthority(role)))
-                    .build();    
+                    .build();
+
+            return userDetails;
         } else {
             logger.warn("Benutzer '{}' nicht gefunden.", username);
             throw new UsernameNotFoundException("Benutzer nicht gefunden: " + username);
