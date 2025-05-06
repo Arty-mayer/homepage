@@ -23,7 +23,6 @@ public class UserCustom extends User {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
     }
 
-    public
     public Long getRoleId() {
         return roleId;
     }
