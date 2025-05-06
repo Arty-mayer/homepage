@@ -1,7 +1,7 @@
 package com.homepage.rpository;
 
-import com.homepage.Model.Content;
-import com.homepage.Model.ContentPermission;
+import com.homepage.model.Content;
+import com.homepage.model.ContentPermission;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,4 +1,4 @@
-package com.homepage.Model;
+package com.homepage.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

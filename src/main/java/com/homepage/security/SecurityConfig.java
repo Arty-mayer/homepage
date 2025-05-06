@@ -1,4 +1,4 @@
-package com.homepage.Security;
+package com.homepage.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

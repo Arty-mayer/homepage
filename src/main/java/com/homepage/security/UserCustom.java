@@ -1,10 +1,7 @@
-package com.homepage.Security;
+package com.homepage.security;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.util.Assert;
 
 import java.util.Collection;
 
@@ -23,7 +20,15 @@ public class UserCustom extends User {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
     }
 
-    public Long getRoleId() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getRoleIds() {
         return roleId;
     }
 

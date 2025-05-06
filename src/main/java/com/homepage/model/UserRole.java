@@ -1,4 +1,4 @@
-package com.homepage.Model;
+package com.homepage.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,11 +6,12 @@ import lombok.Data;
 @Entity
 @Table(name = "user_roles")
 @Data
-public class UserRoles {
+public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String role;
     @Column(columnDefinition = "TEXT")
     private String description;
 

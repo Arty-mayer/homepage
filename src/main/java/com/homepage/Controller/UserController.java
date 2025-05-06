@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.homepage.Model.UserAccounts;
+import com.homepage.model.UserAccounts;
 import com.homepage.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,9 @@
-package com.homepage.Model;
+package com.homepage.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "menus")
@@ -13,6 +15,10 @@ public class Menu {
     @Column(nullable = false)
     private String name;
     private String description;
+    private String htmlClass;
+    @Column(name = "access_roles")
+    @JdbcTypeCode(SqlTypes.ARRAY)
+    private Long[] accessRoles;
     @Column(name = "items", columnDefinition = "TEXT")
     private String items;
 

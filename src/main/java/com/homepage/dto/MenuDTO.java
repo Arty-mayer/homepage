@@ -1,5 +1,7 @@
 package com.homepage.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -7,10 +9,30 @@ public class MenuDTO {
     private Long id;
     private String name;
     private String description;
+    private String htmlClass;
+    @JsonIgnore
+    private Long[] accessRoles;
+    private boolean accessable;
     private Map<Integer, MenuItem> items = new LinkedHashMap<>();
 
     public MenuDTO() {
         //for Jackson Serialization
+    }
+
+    public String getHtmlClass() {
+        return htmlClass;
+    }
+
+    public void setHtmlClass(String htmlClass) {
+        this.htmlClass = htmlClass;
+    }
+
+    public Long[] getAccessRoles() {
+        return accessRoles;
+    }
+
+    public void setAccessRoles(Long[] accessRoles) {
+        this.accessRoles = accessRoles;
     }
 
     public int getItemsCount() {
@@ -49,6 +71,14 @@ public class MenuDTO {
         this.items = items;
     }
 
+    public boolean isAccessable() {
+        return accessable;
+    }
+
+    public void setAccessable(boolean accessable) {
+        this.accessable = accessable;
+    }
+
     public static class MenuItem {
         private Long id;
         private String link;
@@ -56,10 +86,21 @@ public class MenuDTO {
         private String title;
         private String description;
         private Long[] accessRoles;
+        private String htmlClass;
         private Map<Integer, MenuItem> menuSubItems = new LinkedHashMap<>();
+
+       // {{"id":0,"link":"/avc","name":"i1","title":"item1","description":"","accessRoles":{1},"menuSubItems":{}},{"id":0,"link":"/avb","name":"i2","title":"item2","description":"","accessRoles":{1},"menuSubItems":{}}}
 
         public MenuItem() {
             //for Jackson Serialization
+        }
+
+        public String getHtmlClass() {
+            return htmlClass;
+        }
+
+        public void setHtmlClass(String htmlClass) {
+            this.htmlClass = htmlClass;
         }
 
         public int getSubItemsCount() {

@@ -1,6 +1,6 @@
 package com.homepage.config;
 
-import com.homepage.Model.UserRoles;
+import com.homepage.model.UserRole;
 import com.homepage.rpository.UserRolesRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,16 +16,18 @@ public class DataInitializer implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (userRolesRepository.count() == 0) {
-            UserRoles userRoles = new UserRoles();
+            UserRole userRoles = new UserRole();
             userRoles.setId(1L);
             userRoles.setName("admin");
+            userRoles.setRole("ROLE_ADMIN");
             userRoles.setDescription("It must to be ever");
             userRolesRepository.save(userRoles);
         }
         if (userRolesRepository.count() == 1) {
-            UserRoles userRoles = new UserRoles();
+            UserRole userRoles = new UserRole();
             userRoles.setId(2L);
             userRoles.setName("new user");
+            userRoles.setRole("ROLE_USER");
             userRoles.setDescription("It must to be ever");
             userRolesRepository.save(userRoles);
         }

@@ -15,7 +15,7 @@ public class MenuAPIController {
 
     @GetMapping("/{id}")
     public ResponseEntity<String> menuAlsJSON(@PathVariable Long id) {
-        return new ResponseEntity<>("{\"id\":" + id + "}", HttpStatus.OK);
+        return new ResponseEntity<>(menuHandler.getMenuAlsJSON(id), HttpStatus.OK);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.homepage.Model;
+package com.homepage.model;
 
 import java.util.ArrayList;
 import java.util.List;

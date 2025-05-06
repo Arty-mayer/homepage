@@ -1,6 +1,6 @@
 package com.homepage.rpository;
 
-import com.homepage.Model.UserAccounts;
+import com.homepage.model.UserAccounts;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.homepage.rpository;
 
-import com.homepage.Model.Content;
+import com.homepage.model.Content;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

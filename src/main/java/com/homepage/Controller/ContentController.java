@@ -1,7 +1,7 @@
 package com.homepage.Controller;
 
-import com.homepage.Model.Content;
-import com.homepage.Model.ContentPermission;
+import com.homepage.model.Content;
+import com.homepage.model.ContentPermission;
 import com.homepage.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

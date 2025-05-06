@@ -1,8 +1,8 @@
 package com.homepage.Controller;
 
-import com.homepage.Model.Content;
-import com.homepage.Model.ContentPermission;
-import com.homepage.Model.UserAccounts;
+import com.homepage.model.Content;
+import com.homepage.model.ContentPermission;
+import com.homepage.model.UserAccounts;
 import com.homepage.rpository.ContentPermissionRepository;
 import com.homepage.rpository.ContentRepository;
 import com.homepage.rpository.UserAccountsRepository;
