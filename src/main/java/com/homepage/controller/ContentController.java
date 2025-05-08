@@ -1,4 +1,4 @@
-package com.homepage.Controller;
+package com.homepage.controller;
 
 import com.homepage.model.Content;
 import com.homepage.model.ContentPermission;

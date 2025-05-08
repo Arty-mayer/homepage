@@ -1,4 +1,4 @@
-package com.homepage.Controller;
+package com.homepage.controller;
 
 import java.util.Map;
 

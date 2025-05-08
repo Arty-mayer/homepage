@@ -1,6 +1,7 @@
 package com.homepage.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -85,11 +86,10 @@ public class MenuDTO {
         private String name;
         private String title;
         private String description;
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private Long[] accessRoles;
         private String htmlClass;
         private Map<Integer, MenuItem> menuSubItems = new LinkedHashMap<>();
-
-       // {{"id":0,"link":"/avc","name":"i1","title":"item1","description":"","accessRoles":{1},"menuSubItems":{}},{"id":0,"link":"/avb","name":"i2","title":"item2","description":"","accessRoles":{1},"menuSubItems":{}}}
 
         public MenuItem() {
             //for Jackson Serialization

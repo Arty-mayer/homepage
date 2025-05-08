@@ -1,4 +1,4 @@
-package com.homepage.Controller;
+package com.homepage.controller;
 
 import com.homepage.service.MenuHandler;
 import org.springframework.http.HttpStatus;

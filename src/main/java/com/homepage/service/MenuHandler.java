@@ -30,7 +30,7 @@ public class MenuHandler {
         Optional<Menu> menuOptional = menuRepository.findById(id);
         if (menuOptional.isEmpty()) {
             System.out.println("MenuHandler error: there is no menu with id " + id + " in DB");
-            return null;
+            return "{\"Error\":\"10\",\"Message\":\"Menu "+ id + " not found\"} ";
         }
         Menu menu = menuOptional.get();
 
